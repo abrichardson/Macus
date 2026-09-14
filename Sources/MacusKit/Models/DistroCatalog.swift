@@ -23,7 +23,7 @@ public struct DistroCatalog: Codable, Sendable {
     /// Load the catalog bundled in the app's resources.
     public static func bundled() -> DistroCatalog {
         guard
-            let url = Bundle.module.url(forResource: "distros", withExtension: "json"),
+            let url = KitResources.url(forResource: "distros", withExtension: "json"),
             let data = try? Data(contentsOf: url),
             let catalog = try? JSONDecoder().decode(DistroCatalog.self, from: data)
         else {

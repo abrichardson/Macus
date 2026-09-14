@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1
+
+- Fix installed-app resource lookup that crashed Windows USB preparation after the temporary build directory was removed. Apply the same fix to the image catalog and toolkit export.
+- Return a blocked plan when the Windows writer resource is missing instead of force-unwrapping it.
+- Test relocated app resources and missing-resource handling.
+
 ## Quick Scan 1.1.0 — 2026-09-12
 
 - Separate unattended boot image: boot, scan, save to the same USB and shut down. Full Diagnostics remains available from the boot menu.

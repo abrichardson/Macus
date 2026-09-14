@@ -7,7 +7,7 @@ public enum InventoryToolkit {
 
     public static func export(to parent: URL) throws -> URL {
         let fm = FileManager.default
-        guard let source = Bundle.module.url(forResource: "InventoryToolkit", withExtension: nil) else {
+        guard let source = KitResources.url(forResource: "InventoryToolkit", withExtension: nil) else {
             throw failure("The bundled diagnostics toolkit is missing. Rebuild Macus.")
         }
         let values = try parent.resourceValues(forKeys: [.isDirectoryKey, .isWritableKey])

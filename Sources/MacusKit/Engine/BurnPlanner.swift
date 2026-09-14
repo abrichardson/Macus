@@ -130,8 +130,8 @@ public struct BurnPlanner: Sendable {
         }
         catch { return blockedPlan(mode: .single, reason: error.localizedDescription) }
         let label = config.sanitizedLabel.isEmpty ? "WIN_USB" : config.sanitizedLabel
-        let resource = Bundle.module.url(forResource: "windows-write", withExtension: "sh")!
-        guard let script = try? String(contentsOf: resource, encoding: .utf8) else {
+        guard let resource = KitResources.url(forResource: "windows-write", withExtension: "sh"),
+              let script = try? String(contentsOf: resource, encoding: .utf8) else {
             return blockedPlan(mode: .single, reason: "Windows writer resource is missing.")
         }
         let assignments = [

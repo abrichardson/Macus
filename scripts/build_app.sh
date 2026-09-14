@@ -42,7 +42,7 @@ if /usr/bin/strings "$MACOS_DIR/$APP_NAME" | /usr/bin/grep -E '/Users/[^/]+/' >/
   exit 1
 fi
 
-# Copy any SPM resource bundles next to the executable.
+# Copy SPM resources into the location used by KitResources in installed apps.
 shopt -s nullglob
 # Copy only current declared resources; incremental SPM bundles can retain deleted files.
 for b in "$BIN_DIR"/Macus_MacusKit.bundle; do
