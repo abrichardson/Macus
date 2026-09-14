@@ -78,7 +78,9 @@ public struct WriteConfig: Sendable {
         case .windows:
             return WriteConfig(
                 volumeLabel: "WIN_USB",
-                partitionScheme: .gpt,
+                // The installer USB can boot UEFI from FAT32 on MBR. GPT via
+                // diskutil adds an unused ESP; the destination disk is separate.
+                partitionScheme: .mbr,
                 targetSystem: .uefi,
                 fileSystem: .fat32,
                 quickFormat: true,

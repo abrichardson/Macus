@@ -74,9 +74,10 @@ struct WindowsWriterTests {
             try FileManager.default.setAttributes([.posixPermissions: 0o700], ofItemAtPath: path.path)
             return path.path
         }
-        func run(scheme: PartitionScheme = .gpt, setup: WindowsSetupOptions = .init()) async throws -> ShellResult {
+        func run(scheme: PartitionScheme? = nil, setup: WindowsSetupOptions = .init()) async throws -> ShellResult {
             let image = BootImage(url: iso, sizeBytes: 1024, kind: .windows, hasOversizedWIM: false, windowsArchitecture: "amd64")
-            var config = WriteConfig(partitionScheme: scheme)
+            var config = WriteConfig.recommended(for: image)
+            if let scheme { config.partitionScheme = scheme }
             config.windowsSetup = setup
             let plan = BurnPlanner(tools: tools).makePlan(mode: .single, image: image, drive: drive,
                 config: config)
@@ -91,8 +92,8 @@ struct WindowsWriterTests {
         let result = try await f.run()
         #expect(result.ok, "\(result.stderr)")
         #expect(try Data(contentsOf: f.destination.appendingPathComponent("sources/\(payload)")) == Data("payload".utf8))
-        #expect(f.calls.contains("GPT /dev/disk99"))
-        #expect(f.calls.contains("info -plist /dev/disk99s2"))
+        #expect(f.calls.contains("MBR /dev/disk99"))
+        #expect(f.calls.contains("info -plist /dev/disk99s1"))
     }
     @Test func mbrUsesFirstPartition() async throws {
         let f = try Fixture()
@@ -100,6 +101,13 @@ struct WindowsWriterTests {
         #expect(result.ok, "\(result.stderr)")
         #expect(f.calls.contains("MBR /dev/disk99"))
         #expect(f.calls.contains("info -plist /dev/disk99s1"))
+    }
+    @Test func explicitGPTUsesSecondPartition() async throws {
+        let f = try Fixture()
+        let result = try await f.run(scheme: .gpt)
+        #expect(result.ok, "\(result.stderr)")
+        #expect(f.calls.contains("GPT /dev/disk99"))
+        #expect(f.calls.contains("info -plist /dev/disk99s2"))
     }
     @Test func missingWimlibFailsBeforeErase() async throws {
         let f = try Fixture(oversized: true)

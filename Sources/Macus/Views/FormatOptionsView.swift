@@ -16,6 +16,11 @@ struct FormatOptionsView: View {
 
                 if model.showsFormatOptions {
                     schemeAndSystem
+                    if model.isWindowsSingle {
+                        Text("These settings apply to the USB, not the Windows destination disk. MBR is recommended for a single FAT32 installer partition; boot the USB in UEFI mode.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                     fileSystemRow
                 }
 

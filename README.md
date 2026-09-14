@@ -6,17 +6,24 @@ Creates Windows installation USBs on macOS 26 and Apple Silicon. See Credits bel
 
 ## Downloads
 
-[Download Macus 0.4.1](https://github.com/abrichardson/Macus/releases/tag/v0.4.1). This update fixes a crash when preparing a Windows USB in the installed application.
+[Download Macus 0.4.2](https://github.com/abrichardson/Macus/releases/tag/v0.4.2). Windows installer USBs now default to **MBR + FAT32 + UEFI**, avoiding the extra EFI partition created by macOS GPT formatting. Includes the installed-app crash fix from 0.4.1.
 
-- **Macus-0.4.1-arm64.dmg**: the Mac application for Apple Silicon, macOS 26 or later. Quit Macus, open the DMG and drag Macus into Applications, replacing the previous version. A ZIP is also available.
+- **Macus-0.4.2-arm64.dmg**: the Mac application for Apple Silicon, macOS 26 or later. Quit Macus, open the DMG and drag Macus into Applications, replacing the previous version. A ZIP is also available.
 
 Quick Scan 1.1 is unchanged and remains a [separate download](https://github.com/abrichardson/Macus/releases/download/v0.4.0/Macus-QuickScan-USB.img.zip). Extract it and keep the `.img` and `.sha256` together, then select the image in Macus.
 
 The published Mac app is Developer ID signed and Apple-notarized. SHA-256 files verify download integrity; macOS verifies the publisher signature and notarization ticket.
 
+### Windows USB boot fix
+
+A user reported that Windows installed from a GPT-formatted USB would only boot while that USB remained connected. Recreating the installer in Macus 0.4.1 using **MBR + FAT32 + UEFI** resolved the reported problem. Version 0.4.2 makes those settings the Windows default. This is a user-confirmed installation result, not a claim of compatibility with every PC.
+
+Updating Macus does not alter existing USBs or repair an installed Windows system. Use the new defaults when creating your next installer, and select its UEFI entry in the PC boot menu. If Windows currently depends on an existing USB to boot, preserve that USB until the installation is repaired or you are ready to reinstall. Recreating a USB erases its contents. The internal Windows disk can still use GPT.
+
 ## What works in this fork
 
 - Windows UEFI installers on FAT32, with either GPT or MBR partition tables.
+- Windows USBs default to MBR with a single FAT32 installer partition, avoiding the separate unused EFI partition created by macOS GPT formatting. Boot the USB in UEFI mode. The USB partition scheme does not determine the internal Windows disk's partition scheme.
 - Large `sources/install.wim` split into `.swm` parts using bundled wimlib.
 - Small `install.esd` and existing split `.swm` payloads copied normally.
 - Already-mounted ISO detection; mounting errors no longer silently select the Linux writer.

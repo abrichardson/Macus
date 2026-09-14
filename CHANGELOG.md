@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.2 — 2026-09-14
+
+- Default Windows installer USBs to MBR/FAT32 while retaining UEFI boot. This avoids the extra unused EFI partition created by macOS GPT formatting.
+- Explain that USB partition settings are separate from the internal Windows destination disk. Existing installations that depend on their USB boot files require separate repair or reinstallation.
+- Exercise recommended Windows defaults in writer tests, with explicit GPT coverage retained. All 35 Swift tests pass.
+- User confirmed that manually selecting MBR + FAT32 + UEFI in 0.4.1 resolved the reported USB-dependent Windows boot problem. Version 0.4.2 makes that configuration the default; the user test was performed with 0.4.1, not the 0.4.2 binary.
+- Distribute Developer ID signed and Apple-notarized app and DMG with stapled tickets and SHA-256 checksums. Quick Scan 1.1 is unchanged.
+
 ## 0.4.1
 
 - Fix installed-app resource lookup that crashed Windows USB preparation after the temporary build directory was removed. Apply the same fix to the image catalog and toolkit export.
