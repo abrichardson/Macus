@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MACUS by SynapsEdge. Create Windows installer USBs on your Mac and prepare offline PC inventory and diagnostics media.">
+  <meta name="theme-color" content="#101727">
+  <meta property="og:title" content="MACUS · A fresh start. One USB away.">
+  <meta property="og:description" content="A native Mac workspace for Windows installer USBs and offline PC diagnostics. Created by SynapsEdge.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abrichardson.github.io/Macus/">
+  <link rel="canonical" href="https://abrichardson.github.io/Macus/">
+  <link rel="icon" type="image/svg+xml" href="assets/mark.svg">
+  <link rel="stylesheet" href="styles.css">
+  <title>MACUS · A fresh start. One USB away.</title>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav wrap">
+    <a class="wordmark" href="./" aria-label="MACUS home"><img src="assets/mark.svg" width="36" height="36" alt=""><span>MACUS</span></a>
+    <nav aria-label="Main navigation"><a href="#features">Features</a><a href="#how-it-works">How it works</a><a href="https://github.com/abrichardson/Macus">GitHub <span aria-hidden="true">↗</span></a></nav>
+    <a class="button small" href="#download">Get MACUS <span aria-hidden="true">↓</span></a>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="eyebrow"><span class="status-dot" aria-hidden="true"></span> YOUR MAC. YOUR NEXT PC. ONE WORKSPACE.</div>
+      <h1 id="hero-title">A fresh start.<br><span>One USB away.</span></h1>
+      <p class="intro">Create a Windows installer on your Mac.<br>Get to know a PC with offline diagnostics.<br>Make your next USB do more.</p>
+      <div class="hero-actions"><a class="button" href="https://github.com/abrichardson/Macus/releases/download/v0.4.2/Macus-0.4.2-arm64.dmg">Download for Mac <span aria-hidden="true">↓</span></a><a class="text-link" href="#how-it-works">See how it works <span aria-hidden="true">→</span></a></div>
+      <p class="requirements">v0.4.2 <span>·</span> Apple Silicon <span>·</span> macOS 26 or later</p>
+      <figure class="app-preview">
+        <div class="preview-halo" aria-hidden="true"></div>
+        <img class="app-shot" src="assets/macus-app.webp" width="1500" height="1291" alt="MACUS Create installer workspace, showing image selection, USB detection, and the Review & write action." fetchpriority="high">
+        <figcaption>A native Mac workspace. A clear path from image to USB.</figcaption>
+      </figure>
+    </section>
+    <div class="trust wrap"><span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m7 12 3 3 7-7M12 3l8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/></svg>Developer ID signed</span><span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m7 12 3 3 7-7M12 3l8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/></svg>Apple-notarized release</span><a href="https://github.com/abrichardson/Macus/blob/main/LICENSE">Open source · GPLv3 <span aria-hidden="true">↗</span></a><span>Created by SynapsEdge</span></div>
+    <section id="features" class="section wrap" aria-labelledby="features-title">
+      <div class="section-heading"><p class="eyebrow">MADE FOR THE TASK AT HAND</p><h2 id="features-title">Less setup.<br>More getting things done.</h2><p>Practical tools for installing Windows and learning what’s inside a PC, brought together in one Mac app.</p></div>
+      <div class="features">
+        <article><span class="feature-icon" aria-hidden="true">01</span><h3>Windows USBs, from macOS.</h3><p>Select your Windows ISO and let MACUS apply MBR, FAT32, and UEFI defaults. Large WIM files split automatically with bundled wimlib.</p><a class="text-link" href="https://github.com/abrichardson/Macus/blob/main/docs/RUFUS-COMPARISON.md">Windows support details <span aria-hidden="true">↗</span></a></article>
+        <article><span class="feature-icon" aria-hidden="true">02</span><h3>Review before you write.</h3><p>Check the image, destination, and available space before erasing. Follow live progress through copying, verification, and ejection.</p><p class="feature-note">Creating media erases the selected USB.</p></article>
+        <article><span class="feature-icon" aria-hidden="true">03</span><h3>A useful life for every USB.</h3><p>Write raw disk images or restore a USB to everyday storage. A native sidebar keeps each job in its own workspace.</p><p class="feature-note">Windows installers are the primary validated writing path.</p></article>
+      </div>
+    </section>
+    <section id="diagnostics" class="diagnostics" aria-labelledby="diagnostics-title">
+      <div class="wrap diagnostic-grid">
+        <div><p class="eyebrow">MEET QUICK SCAN 1.1</p><h2 id="diagnostics-title">Boot. Scan. Save.<br>On to the next PC.</h2><p>Prepare a diagnostics USB on your Mac, then boot an Intel or AMD PC. Quick Scan collects inventory and basic health readings, saves reports to the USB, and shuts down automatically after a successful save.</p><ul class="checks"><li>CPU, GPU, RAM, and drive inventory</li><li>SMART, NVMe, and battery readings when available</li><li>Offline scans, with a separate report for every run</li><li>Import saved reports in MACUS and export CSV</li></ul><a class="button pale" href="https://github.com/abrichardson/Macus/releases/download/v0.4.0/Macus-QuickScan-USB.img.zip">Download Quick Scan image <span aria-hidden="true">↓</span></a><p class="diagnostic-note">Separate download · Regular USB, 2 GB or larger<br>Extract the ZIP and keep the .img and .sha256 together.</p><a class="text-link" href="https://github.com/abrichardson/Macus/blob/main/docs/QUICK-SCAN.md">Read the Quick Scan guide <span aria-hidden="true">↗</span></a></div>
+        <figure><img src="assets/macus-diagnostics.webp" width="1500" height="1291" alt="The MACUS Inventory & Diagnostics workspace with controls to choose an image, create a diagnostics USB, and load saved reports."><figcaption>Prepare on your Mac. Scan on a PC. Bring the reports back.</figcaption></figure>
+      </div>
+    </section>
+    <section id="how-it-works" class="section wrap" aria-labelledby="steps-title">
+      <div class="section-heading"><p class="eyebrow">FROM YOUR MAC TO A FRESH INSTALL</p><h2 id="steps-title">Three steps. One bootable USB.</h2><p>Bring your Windows ISO and a USB with enough capacity. MACUS handles the installer preparation.</p></div>
+      <ol class="steps"><li><span aria-hidden="true">1</span><h3>Choose your image.</h3><p>Open <strong>Create installer</strong> and select or drop a Windows ISO. MACUS inspects it and applies the recommended settings.</p></li><li><span aria-hidden="true">2</span><h3>Review your USB.</h3><p>Select the destination and click <strong>Review &amp; write</strong>. Back up anything on that USB before confirming the erase.</p></li><li><span aria-hidden="true">3</span><h3>Write, then boot.</h3><p>Wait for copying, verification, and ejection. Connect the USB to the target PC and choose its <strong>UEFI</strong> boot entry.</p></li></ol>
+      <div class="info-note"><strong>Built on your Mac. Booted on a PC.</strong><p>A Windows x64 installer targets Intel/AMD PCs. Preparing it on Apple Silicon does not make it a bootable Windows installer for that Mac. No Windows ISO is included.</p></div>
+    </section>
+    <section class="faq section wrap" aria-labelledby="faq-title"><div><p class="eyebrow">A FEW THINGS TO KNOW</p><h2 id="faq-title">Before you plug in.</h2><p>Clear expectations make for a better first run.</p></div><div class="questions">
+      <details><summary>Which Macs can run MACUS?</summary><p>The published app requires an Apple Silicon Mac running macOS 26 or later. Download the DMG, open it, and drag Macus into Applications. Quit an older copy before replacing it.</p></details>
+      <details><summary>Why MBR for a UEFI Windows installer?</summary><p>MBR gives the USB a single FAT32 installer partition, avoiding the extra unused EFI partition created by macOS GPT formatting. Boot the USB in UEFI mode. Your internal Windows disk can still use GPT, and GPT remains an explicit USB option.</p></details>
+      <details><summary>What happens to files larger than 4 GB?</summary><p>Large sources/install.wim files are automatically split into .swm parts. Oversized ESD files and other files beyond FAT32’s limit are rejected before erasing; ESD conversion is not implemented.</p></details>
+      <details><summary>Does Quick Scan certify a PC’s health?</summary><p>It collects inventory and basic health readings. Unknown or untested data stays unknown. It does not certify hardware, Windows eligibility, or firmware enrollment. Quick Scan 1.1 has virtual boot and save tests; broader physical PC testing and Secure Boot compatibility verification remain pending.</p></details>
+      <details><summary>Can I use multiboot, NTFS, or legacy Windows BIOS boot?</summary><p>Multiboot is disabled. NTFS writing, legacy Windows BIOS boot, and full formatting are not implemented. See the <a href="https://github.com/abrichardson/Macus#limits-and-validation">current support and validation notes</a> for details.</p></details>
+      <details><summary>Where can I report an issue or read the source?</summary><p>MACUS is developed in the public <a href="https://github.com/abrichardson/Macus">GitHub repository</a>. Use <a href="https://github.com/abrichardson/Macus/issues">GitHub Issues</a> for reproducible bugs, and the <a href="https://github.com/abrichardson/Macus/blob/main/SECURITY.md">security policy</a> for security reports.</p></details>
+    </div></section>
+    <section id="download" class="download wrap" aria-labelledby="download-title"><div><p class="eyebrow">YOUR NEXT USB STARTS HERE</p><h2 id="download-title">Ready when you are.</h2><p>MACUS 0.4.2 · Apple Silicon · macOS 26+</p></div><div><a class="button" href="https://github.com/abrichardson/Macus/releases/download/v0.4.2/Macus-0.4.2-arm64.dmg">Download for Mac <span aria-hidden="true">↓</span></a><div class="download-links"><a href="https://github.com/abrichardson/Macus/releases/download/v0.4.2/Macus-0.4.2-arm64.zip">ZIP version</a><a href="https://github.com/abrichardson/Macus/releases/download/v0.4.2/SHA256SUMS.txt">Checksums</a><a href="https://github.com/abrichardson/Macus/releases/tag/v0.4.2">Release notes</a></div></div></section>
+  </main>
+  <footer class="wrap"><div class="footer-top"><a class="wordmark" href="./"><img src="assets/mark.svg" width="32" height="32" alt=""><span>MACUS</span></a><span>Created by SynapsEdge.</span><a href="https://github.com/abrichardson/Macus">Source on GitHub <span aria-hidden="true">↗</span></a></div><p>Built on RufusMac by Harith Dilshan. Windows image support uses wimlib by Eric Biggers and contributors. GPLv3. MACUS is not affiliated with the official Rufus project.</p></footer>
+</body>
+</html>
