@@ -46,7 +46,7 @@ struct InventoryView: View {
                         }
                         Text("Erases the selected USB. Use a 2 GB or larger drive. Includes 512 MB for saved reports; remaining space is unused. For Intel/AMD PCs.")
                             .font(.caption).foregroundStyle(.secondary)
-                        Text("Then: boot the PC from USB → scan → Save & Shut Down → reconnect to your Mac and import reports.")
+                        Text("Then: boot the PC from USB → Quick Scan automatically scans, saves, and shuts down → reconnect to your Mac and import reports.")
                             .font(.caption).foregroundStyle(.secondary)
                         Text("Diagnostics is downloaded separately and stays outside Macus. Extract the image download first and keep its .sha256 file beside it.")
                             .font(.caption).foregroundStyle(.secondary)
@@ -78,7 +78,7 @@ struct InventoryView: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Saved reports").font(.title3.weight(.semibold))
-                        Text("Load the Reports folder from your USB. Every run is kept separately.")
+                        Text("Load the MacusReports folder from your USB. Every run is kept separately.")
                             .font(.caption).foregroundStyle(.secondary)
                     }
                     Spacer()
@@ -86,7 +86,7 @@ struct InventoryView: View {
                     Button("Export CSV…") { exportCSV() }.disabled(reports.isEmpty)
                 }
                 if reports.isEmpty {
-                    ContentUnavailableView("No reports loaded", systemImage: "doc.text.magnifyingglass", description: Text("Run the toolkit on a PC, then load its Reports folder here."))
+                    ContentUnavailableView("No reports loaded", systemImage: "doc.text.magnifyingglass", description: Text("Run Quick Scan on a PC, then import its saved reports here."))
                 } else {
                     ForEach(reports) { report in
                         Button { selected = report } label: {
@@ -241,7 +241,7 @@ struct InventoryView: View {
     }
 
     private func loadReports() {
-        guard let folder = folderPanel(title: "Choose the toolkit’s Reports folder") else { return }
+        guard let folder = folderPanel(title: "Choose the USB’s MacusReports folder") else { return }
         isBusy = true
         Task {
             do {
