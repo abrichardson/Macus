@@ -2,6 +2,8 @@
 
 Created by SynapsEdge. A native macOS app for creating bootable USB installers.
 
+[Visit the MACUS website](https://abrichardson.github.io/Macus/) for downloads, features, and a quick start guide.
+
 Creates Windows installation USBs on macOS 26 and Apple Silicon. See Credits below for the original project and license.
 
 ## Downloads
@@ -68,9 +70,9 @@ Open `dist/Macus.app`. The build bundles wimlib and its library so it does not d
 
 ## Use
 
-1. Select **Single ISO** and your Windows ISO.
-2. Select a USB disk, FAT32, and UEFI. GPT is the default.
-3. Review the destination and confirm **Erase & Write**. All data on that USB is erased.
+1. Select **Create installer** and your Windows ISO.
+2. Select a USB disk. Windows defaults to **MBR + FAT32 + UEFI**; GPT remains an explicit option.
+3. Click **Review & write**, review the destination, and confirm the erase. All data on that USB is erased.
 4. Wait for copying, verification, and successful eject, then boot the destination PC from the USB.
 
 For a Windows x64 ISO, the target is an Intel/AMD PC. Creating the USB on Apple Silicon does not make the x64 installer bootable on that Mac.
